@@ -45,10 +45,19 @@ def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
     text = ""
-    random_key = chains.randkey()
-    print random_key
-    # your code goes here
-
+    new_key = ()
+    while chains.get(new_key):
+        random_key = choice(chains.keys())
+        if random_key is ('I', 'am?'):
+            break
+        else:
+            random_value = choice(chains.get(random_key))
+            new_key = (random_key[1], random_value) 
+            
+            random_key = ' '.join(random_key)
+            text = text + " " + str(random_key) + " " + str(random_value)
+    print new_key
+    # print chains
     return text
 
 
