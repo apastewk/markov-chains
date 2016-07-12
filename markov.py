@@ -36,8 +36,6 @@ def make_chains(text_string):
             chains[key_words] = [value_list]
         else:
             chains.get(key_words).append(value_list)
-
-    print chains
     # your code goes here
 
     return chains
@@ -47,7 +45,8 @@ def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
     text = ""
-
+    random_key = chains.randkey()
+    print random_key
     # your code goes here
 
     return text
