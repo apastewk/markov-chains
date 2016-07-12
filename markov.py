@@ -46,17 +46,26 @@ def make_text(chains):
 
     text = ""
     new_key = ()
-    while chains.get(new_key):
+
+    
+    while True:
         random_key = choice(chains.keys())
-        if random_key is ('I', 'am?'):
+        random_value = choice(chains.get(random_key))
+        new_key = (random_key[1], random_value) 
+        chains[new_key] = chains.get(new_key, 999)
+        if chains[new_key] is 999:
+            new_key = ' '.join(new_key)
+            text = text + str(new_key)
             break
         else:
-            random_value = choice(chains.get(random_key))
-            new_key = (random_key[1], random_value) 
-            
+
             random_key = ' '.join(random_key)
-            text = text + " " + str(random_key) + " " + str(random_value)
-    print new_key
+            text = text + " " + str(random_key) + " " + str(random_value) + " "
+        print random_key
+        print random_value
+        print new_key
+        print chains[new_key]
+
     # print chains
     return text
 
