@@ -7,10 +7,9 @@ def open_and_read_file(file_path):
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
+    text_file = open(file_path).read()
 
-    # your code goes here
-
-    return "This should be a variable that contains your file text as one long string"
+    return text_file
 
 
 def make_chains(text_string):
@@ -27,7 +26,18 @@ def make_chains(text_string):
     """
 
     chains = {}
+    words = text_string.split()
 
+    for i in range(len(words) - 2):
+        key_words = words[i], words[i + 1]
+        value_list = words[i + 2]
+
+        if not chains.get(key_words):
+            chains[key_words] = [value_list]
+        else:
+            chains.get(key_words).append(value_list)
+
+    print chains
     # your code goes here
 
     return chains
