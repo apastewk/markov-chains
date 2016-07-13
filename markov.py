@@ -26,14 +26,23 @@ def make_chains(text_string, text_string2):
         {('hi', 'there'): ['mary', 'juanita'], ('there', 'mary'): ['hi'], ('mary', 'hi': ['there']}
     """
 
-    
+
     chains = {}
+    tuple_length = int(raw_input("How long would you like this tuple? ;)"))
 
     def populate_chain(string_text):
         words = text_string.split()
+        keywords = ()
         for i in range(len(words) - 2):
-            key_words = words[i], words[i + 1]
+            while tuple_length <= len(words):
+                var = 1
+                key_words = key_words + words[var]
+                var += 1
+                if var == tuple_length:
+                    break
+            # key_words = words[i], words[i + 1]
             value_list = words[i + 2]
+            print key_words
 
             if not chains.get(key_words):
                 chains[key_words] = [value_list]
@@ -41,6 +50,7 @@ def make_chains(text_string, text_string2):
                 chains.get(key_words).append(value_list)
         return chains
 
+    
     populate_chain(text_string)
     populate_chain(text_string2)
     # words = text_string2.split()   
@@ -108,4 +118,4 @@ chains = make_chains(input_text, input_text2)
 # Produce random text
 random_text = make_text(chains)
 
-print random_text
+# print random_text
