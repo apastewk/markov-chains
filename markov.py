@@ -46,27 +46,26 @@ def make_text(chains):
 
     text = ""
     new_key = ()
-
-    
+    # got first random tuple. output ('','')
+    random_key = choice(chains.keys()) 
+    new_key = random_key
+    # unpack random_key
+    thing1, thing2 = random_key
+    # added tuple to text string 
+    text = thing1 + " " + thing2
+ 
     while True:
-        random_key = choice(chains.keys())
-        random_value = choice(chains.get(random_key))
-        new_key = (random_key[1], random_value) 
-        chains[new_key] = chains.get(new_key, 999)
-        if chains[new_key] is 999:
-            new_key = ' '.join(new_key)
-            text = text + str(new_key)
+        # get random_key's corresponding value as a string
+        random_value = choice(chains.get(new_key))
+        # added new random value to string 
+        text = text + " " + str(random_value)
+        # created a new tuple to hold the second element of random_key's tuple 
+        # and the value of random_key
+        new_key = (new_key[1], random_value) 
+  
+        # if the value of the new key is not in dictionary then break
+        if chains.get(new_key) is None:
             break
-        else:
-
-            random_key = ' '.join(random_key)
-            text = text + " " + str(random_key) + " " + str(random_value) + " "
-        print random_key
-        print random_value
-        print new_key
-        print chains[new_key]
-
-    # print chains
     return text
 
 
